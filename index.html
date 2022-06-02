@@ -9,22 +9,22 @@
     <script src = "https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type = "text/babel">
         const root = document.getElementById("root");
-        let counter = 0;
-        function reRender()
+        function App()
         {
-            ReactDOM.render(<Container />, root);
+            const [counter, setCounter] = React.useState(0);            
+            const onClick = () => {
+                setCounter(counter +1);
+            };
+        
+            return (
+                <div>
+                    <h3>Total Click: {counter} </h3>
+                    <button onClick = {onClick}> click me </button>                
+                </div>
+            );
         }
-        function countUp() {
-            counter = counter + 1;
-            reRender()
-        }
-        const Container = () => (
-            <div>
-                <h3>Total Click: {counter} </h3>
-                <button onClick={countUp}> click me </button>                
-            </div>
-        )
+    
         //const container = React.createElement("div", null, [Title, btn]);
-        ReactDOM.render(<Container />, root);
+        ReactDOM.render(<App />, root);
     </script>
 </html>
